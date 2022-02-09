@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.example.omregner.databinding.ActivityMainBinding
+import kotlin.math.PI
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -29,8 +31,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         val buttonPressed = v as Button
 
-        //take the button text, slice the quotation mark, convert it to String and parse it to Int
-        val diameter = Integer.parseInt(buttonPressed.text.slice(0..1).toString())
+        //take the button text, slice the quotation mark, convert it to String and parse it to Double
+        val diameter = buttonPressed.text.slice(0..1).toString().toDouble()
 
         //default all buttons colors to grey
         binding.button12.setBackgroundColor(ContextCompat.getColor(baseContext, R.color.grey))
@@ -42,5 +44,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //set pressed button backgroundcolor
         buttonPressed.setBackgroundColor(ContextCompat.getColor(baseContext, R.color.purple_200))
+
+        //set text of  tv_circumference_display
+        binding.tvCircumferenceDisplay.text = getCircumferenceInCmToString(diameter)
+
+        // set text of tv_area_display
+        binding.tvAreaDisplay.text = getAreaInCmToString(diameter)
+    }
+
+    private fun getCircumferenceInCmToString(diameter: Double): String {
+        var result = (2 * PI * (diameter/2)) * 2.54
+        return String.format("%.2f", result)
+    }
+
+    private fun getAreaInCmToString(diameter: Double): String {
+        var diameterInCm = diameter * 2.54
+        var result = PI * (diameterInCm/2).pow(2)
+        return String.format("%.2f", result)
     }
 }
