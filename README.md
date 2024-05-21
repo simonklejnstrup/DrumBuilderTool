@@ -1,20 +1,18 @@
-# BandBook
+# DrumBuilderTool
 
-> A band-management app for all musicians
+> Handy measurement conversion tool for drum-restorers.
 
 ## Introduction
 
-BandBook lets bandmembers easily schedule band related events and get in contact in message-threads.
+DrumBuilderTool was created to help drummers with quick measurements when restoring a drumset.
 
 ## Features
 
-- Login with Google
-- Forum feature
-- Calendar feature
+- Select diameter of a drum and be presented with circumference, area and diameter in cm.
 
 ## Technologies Used
 
-- Jetpack Compose
+- XML Views
 - Kotlin
 - Gradle
 
